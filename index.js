@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+
 const userRouter = require('./routes/UserRoutes')
 const {
   MONGO_USER,
@@ -12,7 +13,7 @@ const app = express()
 app.use(express.json())
 const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
 
-const connectWithRetry = (e) => {
+const connectWithRetry = () => {
   mongoose
     .connect(mongoURL, {
       useNewUrlParser: true,
@@ -29,8 +30,9 @@ const connectWithRetry = (e) => {
 }
 
 connectWithRetry()
-
-app.get('/', (req, res) => {
+app.enable('trust proxy')
+app.get('/api/v1', (req, res) => {
+  console.log('Received')
   res.send(
     `<h2>Hi 2there from Docker Container in ${process.env.NODE_ENV}</h2>`
   )
