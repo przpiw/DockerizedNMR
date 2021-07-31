@@ -32,7 +32,6 @@ const connectWithRetry = () => {
 connectWithRetry()
 app.enable('trust proxy')
 app.get('/api/v1', (req, res) => {
-  console.log('Received')
   res.send(
     `<h2>Hi 2there from Docker Container in ${process.env.NODE_ENV}</h2>`
   )
