@@ -1,5 +1,5 @@
-# Dockerized stack <h1> tag
+# Dockerized stack <h1>
 
 ## Node/Mongo/Redis
 
-## Session Auth
+## Basic Session Auth
