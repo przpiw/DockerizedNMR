@@ -1,0 +1,19 @@
+version: '3'
+services:
+  node-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: production
+    command: node index.js
+    volumes:
+      - ./:/app:ro
+      - app/node_modules
+    environment:
+      - NODE_ENV=production
+      - MONGO_USER=damian
+      - MONGO_PASSWORD=mypassword
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=damian
+      - MONGO_INITDB_ROOT_PASSWORD=mypassword
