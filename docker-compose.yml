@@ -14,9 +14,6 @@ services:
       - mongo
   mongo:
     image: mongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=damian
-      - MONGO_INITDB_ROOT_PASSWORD=mypassword
     volumes:
       - mongo-db:/data/db
 volumes:
