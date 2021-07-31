@@ -8,15 +8,12 @@ services:
       context: .
       args:
         NODE_ENV: production
-    command: node index.js
-    volumes:
-      - ./:/app:ro
-      - app/node_modules
     environment:
       - NODE_ENV=production
-      - MONGO_USER=damian
-      - MONGO_PASSWORD=mypassword
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD={MONGO_PASSWORD}
+    command: node index.js
   mongo:
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=damian
-      - MONGO_INITDB_ROOT_PASSWORD=mypassword
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
